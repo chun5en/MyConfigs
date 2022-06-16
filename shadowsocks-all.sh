@@ -607,8 +607,8 @@ install_select(){
         hint="${software[$i-1]}"
         echo -e "${green}${i}${plain}) ${hint}"
     done
-    read -p "Please enter a number (Default ${software[0]}):" selected
-    [ -z "${selected}" ] && selected='1'
+    read -p "Please enter a number (Default ${software[1]}):" selected
+    [ -z "${selected}" ] && selected='2'
     case "${selected}" in
         1|2|3|4)
         echo
@@ -625,8 +625,8 @@ install_select(){
 
 install_prepare_password(){
     echo "Please enter password for ${software[${selected}-1]}"
-    read -p '(Default password: teddysun.com):' shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd='teddysun.com'
+    read -p '(Default password: c18z55212424):' shadowsockspwd
+    [ -z "${shadowsockspwd}" ] && shadowsockspwd='c18z55212424'
     echo
     echo "password = ${shadowsockspwd}"
     echo
@@ -635,7 +635,7 @@ install_prepare_password(){
 install_prepare_port() {
     while true
     do
-    dport=$(shuf -i 9000-19999 -n 1)
+    dport=8090
     echo -e "Please enter a port for ${software[${selected}-1]} [1-65535]"
     read -p "(Default port: ${dport}):" shadowsocksport
     [ -z "${shadowsocksport}" ] && shadowsocksport=${dport}
@@ -725,8 +725,8 @@ install_prepare_protocol(){
         hint="${protocols[$i-1]}"
         echo -e "${green}${i}${plain}) ${hint}"
     done
-    read -p "Which protocol you'd select(Default: ${protocols[0]}):" protocol
-    [ -z "$protocol" ] && protocol=1
+    read -p "Which protocol you'd select(Default: ${protocols[6]}):" protocol
+    [ -z "$protocol" ] && protocol=7
     expr ${protocol} + 1 &>/dev/null
     if [ $? -ne 0 ]; then
         echo -e "[${red}Error${plain}] Please enter a number"
@@ -752,8 +752,8 @@ install_prepare_obfs(){
         hint="${obfs[$i-1]}"
         echo -e "${green}${i}${plain}) ${hint}"
     done
-    read -p "Which obfs you'd select(Default: ${obfs[0]}):" r_obfs
-    [ -z "$r_obfs" ] && r_obfs=1
+    read -p "Which obfs you'd select(Default: ${obfs[5]}):" r_obfs
+    [ -z "$r_obfs" ] && r_obfs=6
     expr ${r_obfs} + 1 &>/dev/null
     if [ $? -ne 0 ]; then
         echo -e "[${red}Error${plain}] Please enter a number"
