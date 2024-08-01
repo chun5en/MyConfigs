@@ -676,7 +676,7 @@ install_prepare_cipher(){
             hint="${r_ciphers[$i-1]}"
             echo -e "${green}${i}${plain}) ${hint}"
         done
-        [ -z "$pick" ] && pick=12
+        [ -z "$pick" ] && pick=2
         expr ${pick} + 1 &>/dev/null
         if [ $? -ne 0 ]; then
             echo -e "[${red}Error${plain}] Please enter a number"
@@ -747,7 +747,7 @@ install_prepare_obfs(){
         hint="${obfs[$i-1]}"
         echo -e "${green}${i}${plain}) ${hint}"
     done
-    [ -z "$r_obfs" ] && r_obfs=1
+    [ -z "$r_obfs" ] && r_obfs=6
     expr ${r_obfs} + 1 &>/dev/null
     if [ $? -ne 0 ]; then
         echo -e "[${red}Error${plain}] Please enter a number"
